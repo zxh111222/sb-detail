@@ -9,7 +9,7 @@
     <bean id="nopeBlogRepository" class="dao.impl.NopeBlogRepository"/>
 
     <bean id="simpleBlogService" class="service.impl.SimpleBlogService">
-        <constructor-arg ref="simpleBlogRepository"/>
+        <constructor-arg ref="nopeBlogRepository"/>
     </bean>
 
     <bean id="blogController" class="controller.BlogController">
