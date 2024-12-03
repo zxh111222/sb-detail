@@ -7,7 +7,7 @@ import service.impl.SimpleBlogService;
 
 public class BlogController {
      public void save(Blog blog) {
-        BlogService blogService = new NopeBlogService();
+        BlogService blogService = new SimpleBlogService();
         blogService.save(blog);
     }
 }
