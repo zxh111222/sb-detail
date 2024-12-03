@@ -11,6 +11,7 @@ public class BlogController {
          // 其他地方也可能需要切换，如：BlogService 依赖的具体 BlogRepository 实现类
          // ... 真实项目要切换的地方可能很多
          // 思考：如何在不修改 .java 源代码的方式，实现自由切换？
+         // 思路提醒：现在是“自己 new” => 能否“让别人 new 好给我直接用”，现实中有很多这样的需求和例子
         BlogService blogService = new SimpleBlogService();
         blogService.save(blog);
     }
