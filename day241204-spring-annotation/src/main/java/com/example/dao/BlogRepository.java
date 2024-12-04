@@ -1,6 +1,6 @@
-package dao;
+package com.example.dao;
 
-import entity.Blog;
+import com.example.entity.Blog;
 
 public interface BlogRepository {
     void save(Blog blog);

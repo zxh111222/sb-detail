@@ -1,11 +1,11 @@
-package config;
+package com.example.config;
 
-import controller.BlogController;
-import dao.impl.NopeBlogRepository;
-import dao.impl.SimpleBlogRepository;
+import com.example.controller.BlogController;
+import com.example.dao.impl.NopeBlogRepository;
+import com.example.dao.impl.SimpleBlogRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import service.impl.SimpleBlogService;
+import com.example.service.impl.SimpleBlogService;
 
 // Configuration 注解 相对于之前创建一个 beans.xml 文件
 @Configuration

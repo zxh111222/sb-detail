@@ -1,7 +1,7 @@
-package dao.impl;
+package com.example.dao.impl;
 
-import dao.BlogRepository;
-import entity.Blog;
+import com.example.dao.BlogRepository;
+import com.example.entity.Blog;
 
 public class NopeBlogRepository implements BlogRepository {
     @Override

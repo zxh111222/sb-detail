@@ -1,8 +1,8 @@
-package service.impl;
+package com.example.service.impl;
 
-import dao.BlogRepository;
-import entity.Blog;
-import service.BlogService;
+import com.example.dao.BlogRepository;
+import com.example.entity.Blog;
+import com.example.service.BlogService;
 
 public class NopeBlogService implements BlogService {
     BlogRepository blogRepository;

@@ -1,6 +1,6 @@
-package service;
+package com.example.service;
 
-import entity.Blog;
+import com.example.entity.Blog;
 
 public interface BlogService {
     void save(Blog blog);

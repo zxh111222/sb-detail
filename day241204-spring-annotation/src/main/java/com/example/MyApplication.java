@@ -1,8 +1,9 @@
-import config.AppConfig;
-import controller.BlogController;
-import entity.Blog;
+package com.example;
+
+import com.example.config.AppConfig;
+import com.example.controller.BlogController;
+import com.example.entity.Blog;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MyApplication {
     public static void main(String[] args) {

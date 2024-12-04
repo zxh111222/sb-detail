@@ -1,7 +1,7 @@
-package controller;
+package com.example.controller;
 
-import entity.Blog;
-import service.BlogService;
+import com.example.entity.Blog;
+import com.example.service.BlogService;
 
 public class BlogController {
 
