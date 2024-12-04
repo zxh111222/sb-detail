@@ -2,7 +2,10 @@ package com.example.controller;
 
 import com.example.entity.Blog;
 import com.example.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BlogController {
 
     BlogService blogService;
