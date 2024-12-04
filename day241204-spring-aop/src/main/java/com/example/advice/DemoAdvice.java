@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class DemoAdvice {
 
-    @Pointcut("execution(void com.example.dao.BlogRepositoryImpl.*())")
+    @Pointcut("execution(void com.example.dao.BlogRepositoryImpl.*te())")
     private void pt(){}
 
     @Before("pt()")
