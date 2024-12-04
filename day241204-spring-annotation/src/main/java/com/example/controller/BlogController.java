@@ -11,11 +11,12 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BlogController {
 
+    @Autowired
     BlogService blogService;
 
-    public BlogController(BlogService blogService) {
+   /* public BlogController(BlogService blogService) {
         this.blogService = blogService;
-    }
+    }*/
 
     public void save(Blog blog) {
          // 这里只是简单举了一个小例子 - 切换 BlogController 中依赖的具体 BlogService 实现类
