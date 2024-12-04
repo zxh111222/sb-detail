@@ -12,5 +12,11 @@ public class AppConfigTest {
                 new AnnotationConfigApplicationContext(AppConfig.class);
         BlogRepository blogRepository = applicationContext.getBean(BlogRepository.class);
         blogRepository.save();
+        System.out.println("--- --- ---");
+        blogRepository.delete();
+        System.out.println("--- --- ---");
+        blogRepository.update();
+        System.out.println("--- --- ---");
+        blogRepository.list();
     }
 }

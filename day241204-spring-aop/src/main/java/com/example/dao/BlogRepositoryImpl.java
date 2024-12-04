@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 public class BlogRepositoryImpl implements BlogRepository{
     @Override
     public void save() {
-        System.out.println("执行方法之前，记录当前用户的身份，操作时间等日志信息");
-
         System.out.println("BlogRepositoryImpl.save");
     }
 
