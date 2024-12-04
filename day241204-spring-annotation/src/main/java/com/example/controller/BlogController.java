@@ -11,7 +11,7 @@ public class BlogController {
 
     BlogService blogService;
 
-    public BlogController(@Qualifier("simpleBlogService") BlogService blogService) {
+    public BlogController(BlogService blogService) {
         this.blogService = blogService;
     }
 

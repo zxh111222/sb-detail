@@ -2,9 +2,11 @@ package com.example.dao.impl;
 
 import com.example.dao.BlogRepository;
 import com.example.entity.Blog;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class SimpleBlogRepository implements BlogRepository {
     @Override
     public void save(Blog blog) {
