@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
 public class SimpleBlogRepository implements BlogRepository {
     @Override
     public void save(Blog blog) {
