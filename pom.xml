@@ -13,6 +13,7 @@
         <module>day241203-before-spring</module>
         <module>day241203-spring-quickstart</module>
         <module>day241204-spring-annotation</module>
+        <module>day241204-spring-aop</module>
     </modules>
 
     <properties>
