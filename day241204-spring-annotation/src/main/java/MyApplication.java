@@ -1,11 +1,16 @@
+import config.AppConfig;
 import controller.BlogController;
 import entity.Blog;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MyApplication {
     public static void main(String[] args) {
         // XML-based Configuration Metadata
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+//        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+
+        // Annotation-based Configuration Metadata
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
         System.out.println("MyApplication.main");
 //        BlogRepository blogRepository = new NopeBlogRepository();
