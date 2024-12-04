@@ -6,8 +6,10 @@ import com.example.service.BlogService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+//@Component
+@Service
 @Primary
 public class SimpleBlogService implements BlogService {
     BlogRepository blogRepository;

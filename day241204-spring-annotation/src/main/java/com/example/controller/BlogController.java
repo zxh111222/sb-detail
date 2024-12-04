@@ -5,8 +5,10 @@ import com.example.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+//@Component
+@Controller
 public class BlogController {
 
     BlogService blogService;

@@ -4,8 +4,10 @@ import com.example.dao.BlogRepository;
 import com.example.entity.Blog;
 import com.example.service.BlogService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+//@Component
+@Service
 public class NopeBlogService implements BlogService {
     BlogRepository blogRepository;
 
