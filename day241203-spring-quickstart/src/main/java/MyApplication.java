@@ -9,6 +9,7 @@ import service.impl.SimpleBlogService;
 
 public class MyApplication {
     public static void main(String[] args) {
+        // XML-based Configuration Metadata
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
 
         System.out.println("MyApplication.main");
