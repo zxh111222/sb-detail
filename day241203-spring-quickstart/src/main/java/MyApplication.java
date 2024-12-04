@@ -18,5 +18,7 @@ public class MyApplication {
         BlogController blogController = (BlogController) applicationContext.getBean("blogController");
         Blog blog = new Blog(1L, "这是一个标题", "这是内容");
         blogController.save(blog);
+
+        // 现在可以去看看之前的 sb-blog 项目，猜猜哪里能找到 IoC 容器
     }
 }
