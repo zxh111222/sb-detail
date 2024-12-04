@@ -3,13 +3,14 @@ package com.example.service.impl;
 import com.example.dao.BlogRepository;
 import com.example.entity.Blog;
 import com.example.service.BlogService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleBlogService implements BlogService {
     BlogRepository blogRepository;
 
-    public SimpleBlogService(BlogRepository blogRepository) {
+    public SimpleBlogService(@Qualifier("simpleBlogRepository") BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 

@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.entity.Blog;
 import com.example.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,7 +11,7 @@ public class BlogController {
 
     BlogService blogService;
 
-    public BlogController(BlogService blogService) {
+    public BlogController(@Qualifier("simpleBlogService") BlogService blogService) {
         this.blogService = blogService;
     }
 
