@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 
 public class GirlLoggingProxy implements Flyable {
 
-    Girl girl;
+    Flyable flyable;
 
-    public GirlLoggingProxy(Girl girl) {
-        this.girl = girl;
+    public GirlLoggingProxy(Flyable flyable) {
+        this.flyable = flyable;
     }
 
     @Override
     public void fly() {
         System.out.println("用户 admin 开始访问该方法，地点：xm，时间：" + LocalDateTime.now());
 
-        girl.fly();
+        flyable.fly();
 
         System.out.println("用户 admin 结束访问该方法，地点：xm，时间：" + LocalDateTime.now());
     }

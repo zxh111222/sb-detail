@@ -7,10 +7,10 @@ package com.example.proxy;
  */
 public class GirlTimerProxy implements Flyable{
 
-    Girl girl;
+    Flyable flyable;
 
-    public GirlTimerProxy(Girl target) {
-        this.girl = target;
+    public GirlTimerProxy(Flyable flyable) {
+        this.flyable = flyable;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class GirlTimerProxy implements Flyable{
         long start = System.currentTimeMillis();
         System.out.println("start = " + start);
 
-        girl.fly();
+        flyable.fly();
 
         long end = System.currentTimeMillis();
         System.out.println("fly time = " + (end - start));
