@@ -1,4 +1,25 @@
 package com.example.proxy;
 
-public class Girl3 {
+/**
+ * Girl3 跟目标对象实现同样的接口（代理她）
+ * 从另一个角度来看，这种方式叫“聚合”，上一种方式叫“继承”
+ */
+public class Girl3 implements Flyable{
+
+    Girl girl;
+
+    public Girl3(Girl target) {
+        this.girl = target;
+    }
+
+    @Override
+    public void fly() {
+        long start = System.currentTimeMillis();
+        System.out.println("start = " + start);
+
+        girl.fly();
+
+        long end = System.currentTimeMillis();
+        System.out.println("fly time = " + (end - start));
+    }
 }

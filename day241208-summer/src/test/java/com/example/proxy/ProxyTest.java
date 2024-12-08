@@ -13,4 +13,11 @@ public class ProxyTest {
     public void testGirl2() {
         new Girl2().fly();
     }
+
+    @Test
+    public void testGirl3() {
+        Girl target = new Girl();
+        new Girl3(target).fly();
+    }
+
 }
