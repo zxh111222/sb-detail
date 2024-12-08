@@ -16,5 +16,11 @@
         <constructor-arg ref="simpleBlogService"/>
     </bean>
 
+    <bean id="bean3" class="com.example.bean.Bean3"/>
+
+    <bean id="bean2NeedBean3" class="com.example.bean.Bean2NeedBean3">
+        <constructor-arg ref="bean3"/>
+    </bean>
+
 
 </beans>
