@@ -5,7 +5,12 @@ import org.junit.jupiter.api.Test;
 public class ProxyTest {
 
     @Test
-    public void xxx() {
+    public void testGirl() {
         new Girl().fly();
+    }
+
+    @Test
+    public void testGirl2() {
+        new Girl2().fly();
     }
 }
