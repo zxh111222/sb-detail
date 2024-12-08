@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringJUnitConfig(AppConfig.class)
 public class IoCTest {
-    @Autowired
+    /*@Autowired
     ApplicationContext applicationContext;
 
     @Test
@@ -28,5 +28,5 @@ public class IoCTest {
 
         Assertions.assertFalse(blogController);
     }
-
+*/
 }

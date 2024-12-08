@@ -25,16 +25,31 @@ public class MyClassPathXmlApplicationContext implements MyBeanFactory {
         Elements beans = document.select("beans bean");
 
         for (Element bean : beans) {
-            String beanClass = bean.attr("class");
             String beanId = bean.attr("id");
+            String beanClass = bean.attr("class");
+
+            // 这里模拟只有一个构造器参数的情况
+            Element cae = bean.selectFirst("constructor-arg");
+
             try {
-                Constructor<?> declaredConstructor = Class.forName(beanClass).getDeclaredConstructor();
-                Object o = declaredConstructor.newInstance();
-                beansMap.put(beanId, o);
+                if (cae == null) {
+                    Constructor<?> declaredConstructor = Class.forName(beanClass).getDeclaredConstructor();
+                    Object o = declaredConstructor.newInstance();
+                    beansMap.put(beanId, o);
+
+                } else {
+                    String ref = cae.attr("ref");
+                    Object refObject = beansMap.get(ref);
+                    Constructor<?> declaredConstructor = Class.forName(beanClass).getDeclaredConstructor(refObject.getClass());
+                    System.out.println("refObject.getClass() = " + refObject.getClass());
+                    Object o = declaredConstructor.newInstance(refObject);
+                    beansMap.put(beanId, o);
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
-
             }
+
+
         }
     }
 

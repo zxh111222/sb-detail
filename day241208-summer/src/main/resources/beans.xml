@@ -5,4 +5,8 @@
 
     <bean id="bean2" class="com.example.bean.Bean2" />
 
+    <bean id="bean3NeedBean2" class="com.example.bean.Bean3NeedBean2">
+        <constructor-arg ref="bean2"/>
+    </bean>
+
 </beans>
