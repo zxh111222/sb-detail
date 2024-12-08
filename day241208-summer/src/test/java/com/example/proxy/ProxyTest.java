@@ -17,7 +17,7 @@ public class ProxyTest {
     @Test
     public void testGirl3() {
         Girl target = new Girl();
-        new Girl3(target).fly();
+        new GirlTimerProxy(target).fly();
     }
 
 }

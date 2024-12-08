@@ -5,11 +5,11 @@ package com.example.proxy;
  * 从另一个角度来看，这种方式叫“聚合”，上一种方式叫“继承”
  * 思考：见 commit 消息
  */
-public class Girl3 implements Flyable{
+public class GirlTimerProxy implements Flyable{
 
     Girl girl;
 
-    public Girl3(Girl target) {
+    public GirlTimerProxy(Girl target) {
         this.girl = target;
     }
 
