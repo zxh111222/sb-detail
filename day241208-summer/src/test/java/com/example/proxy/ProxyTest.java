@@ -29,11 +29,20 @@ public class ProxyTest {
 
     @Test
     @DisplayName("即统计时间，也记录日志（先日志、再时间）")
-    void testGirlTimerAndLogging() {
+    void testGirlLoggingAndTimer() {
         Girl target = new Girl();
         GirlTimerProxy girlTimerProxy = new GirlTimerProxy(target);
         GirlLoggingProxy girlLoggingProxy = new GirlLoggingProxy(girlTimerProxy);
         girlLoggingProxy.fly();
+    }
+
+    @Test
+    @DisplayName("即统计时间，也记录日志（先时间、再日志）")
+    void testGirlTimerAndLogging() {
+        Girl target = new Girl();
+        GirlLoggingProxy girlLoggingProxy = new GirlLoggingProxy(target);
+        GirlTimerProxy girlTimerProxy = new GirlTimerProxy(girlLoggingProxy);
+        girlTimerProxy.fly();
     }
 
 }
