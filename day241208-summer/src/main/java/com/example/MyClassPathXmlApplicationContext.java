@@ -65,7 +65,10 @@ public class MyClassPathXmlApplicationContext implements MyBeanFactory {
 
     @Override
     public String[] getBeanDefinitionNames() {
-        return beansMap.keySet().toArray(new String[0]);
+        if (beansMap.isEmpty()) {
+            return null;
+        }
+        return beansMap.keySet().toArray(String[]::new);
     }
 
 }
