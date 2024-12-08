@@ -14,6 +14,7 @@
         <module>day241203-spring-quickstart</module>
         <module>day241204-spring-annotation</module>
         <module>day241204-spring-aop</module>
+        <module>day241208-spring-annotation-2</module>
     </modules>
 
     <properties>
