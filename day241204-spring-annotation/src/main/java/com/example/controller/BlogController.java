@@ -2,21 +2,14 @@ package com.example.controller;
 
 import com.example.entity.Blog;
 import com.example.service.BlogService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
-//@Component
-@Controller
 public class BlogController {
 
-    @Autowired
     BlogService blogService;
 
-   /* public BlogController(BlogService blogService) {
+    public BlogController(BlogService blogService) {
         this.blogService = blogService;
-    }*/
+    }
 
     public void save(Blog blog) {
          // 这里只是简单举了一个小例子 - 切换 BlogController 中依赖的具体 BlogService 实现类

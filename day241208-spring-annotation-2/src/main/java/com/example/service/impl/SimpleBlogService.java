@@ -1,4 +1,4 @@
-package service.impl;
+package com.example.service.impl;
 
 import com.example.dao.BlogRepository;
 import com.example.entity.Blog;
@@ -6,9 +6,7 @@ import com.example.service.BlogService;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-//@Component
-@Service
-@Primary
+
 public class SimpleBlogService implements BlogService {
     BlogRepository blogRepository;
 

@@ -1,12 +1,11 @@
-package service.impl;
+package com.example.service.impl;
 
 import com.example.dao.BlogRepository;
 import com.example.entity.Blog;
 import com.example.service.BlogService;
 import org.springframework.stereotype.Service;
 
-//@Component
-@Service
+
 public class NopeBlogService implements BlogService {
     BlogRepository blogRepository;
 

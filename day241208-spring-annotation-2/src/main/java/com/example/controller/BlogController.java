@@ -1,16 +1,22 @@
-package controller;
+package com.example.controller;
 
 import com.example.entity.Blog;
 import com.example.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import com.example.service.impl.SimpleBlogService;
+import org.springframework.stereotype.Repository;
 
-//@Component
-@Controller
+
 public class BlogController {
 
-    @Autowired
     BlogService blogService;
+
+    public BlogController(SimpleBlogService simpleBlogService) {
+    }
+
+    public BlogController(String s) {
+    }
 
    /* public BlogController(BlogService blogService) {
         this.blogService = blogService;

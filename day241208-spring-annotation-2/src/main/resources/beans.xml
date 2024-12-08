@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="simpleBlogRepository" class="com.example.dao.impl.SimpleBlogRepository"/>
+
+    <bean id="nopeBlogRepository" class="com.example.dao.impl.NopeBlogRepository"/>
+
+    <bean id="simpleBlogService" class="com.example.service.impl.SimpleBlogService">
+        <constructor-arg ref="nopeBlogRepository"/>
+    </bean>
+
+    <bean id="blogController" class="com.example.controller.BlogController">
+        <constructor-arg ref="simpleBlogService"/>
+    </bean>
+
+
+</beans>
