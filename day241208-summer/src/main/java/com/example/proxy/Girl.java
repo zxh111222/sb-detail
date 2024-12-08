@@ -1,5 +1,7 @@
 package com.example.proxy;
 
+import org.aspectj.lang.annotation.Before;
+
 import java.util.Random;
 
 /**
@@ -21,5 +23,6 @@ public class Girl implements Flyable {
 
         long end = System.currentTimeMillis();
         System.out.println("fly time = " + (end - start));
+        // 思考：假设没办法修改 Girl 的源代码，又该如何做？(如：它是来自别人编译好的 jar 包中的类)
     }
 }
