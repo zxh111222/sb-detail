@@ -13,17 +13,17 @@ import java.net.URLClassLoader;
 
 public class MyProxy {
 
-    public static Object newProxyInstance() {
+    public static Object newProxyInstance(Class i) {
         String sourceCode = """
                 package com.example.proxy;
                 
                 import java.time.LocalDateTime;
                 
-                public class GirlLoggingProxy2 implements Flyable {
+                public class GirlLoggingProxy2 implements %s {
                 
-                    Flyable flyable;
+                    %s flyable;
                 
-                    public GirlLoggingProxy2(Flyable flyable) {
+                    public GirlLoggingProxy2(%s flyable) {
                         this.flyable = flyable;
                     }
                 
@@ -37,7 +37,7 @@ public class MyProxy {
                     }
                 }
                 
-                """;
+                """.formatted(i.getName(), i.getName(), i.getName());
 
         String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
