@@ -4,10 +4,12 @@ import com.example.bean.Bean1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 public class MyIoCTest {
 
     @Test
-    public void xxx() {
+    public void xxx() throws IOException {
         // 根据配置文件 new 出自己的容器
         MyBeanFactory myBeanFactory = new MyClassPathXmlApplicationContext("beans.xml");
         // 根据名称获取 bean
