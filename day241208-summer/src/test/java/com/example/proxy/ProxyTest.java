@@ -49,4 +49,12 @@ public class ProxyTest {
     // 思考2：再往外走一层，如果想代理的对象不止 Girl/Flyable，还是10个其他的类型，或者任何类型的对象；
     // 又该如何处理，如何灵活的处理
 
+    @Test
+    @DisplayName("测试动态代理")
+    void testDynamicProxy() {
+        Flyable flyable = (Flyable) MyProxy.newProxyInstance();
+
+        flyable.fly();
+    }
+
 }
