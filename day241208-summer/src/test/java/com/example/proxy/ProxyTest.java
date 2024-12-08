@@ -28,10 +28,12 @@ public class ProxyTest {
     }
 
     @Test
-    @DisplayName("即统计时间，也记录日志（先时间、再日志）")
+    @DisplayName("即统计时间，也记录日志（先日志、再时间）")
     void testGirlTimerAndLogging() {
-        // todo 思考：如何实现“即记录日志，也统计时间”的功能
-        // 同时思考：如何灵活的调整“记录日志”和“统计时间”的顺序
+        Girl target = new Girl();
+        GirlTimerProxy girlTimerProxy = new GirlTimerProxy(target);
+        GirlLoggingProxy girlLoggingProxy = new GirlLoggingProxy(girlTimerProxy);
+        girlLoggingProxy.fly();
     }
 
 }
