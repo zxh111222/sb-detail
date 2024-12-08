@@ -8,12 +8,28 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
 public class MyProxy {
 
     public static Object newProxyInstance(Class i) {
+        String methodsString = "";
+        Method[] methods = i.getMethods();
+        for (Method method : methods) {
+            methodsString += """
+                    @Override
+                        public void %s() {
+                            System.out.println("用户 admin 开始访问该方法，地点：xm，时间：" + LocalDateTime.now());
+                    
+                            flyable.%s();
+                    
+                            System.out.println("用户 admin 结束访问该方法，地点：xm，时间：" + LocalDateTime.now());
+                        }
+                    """.formatted(method.getName(), method.getName());
+        }
+
         String sourceCode = """
                 package com.example.proxy;
                 
@@ -27,17 +43,11 @@ public class MyProxy {
                         this.flyable = flyable;
                     }
                 
-                    @Override
-                    public void fly() {
-                        System.out.println("用户 admin 开始访问该方法，地点：xm，时间：" + LocalDateTime.now());
+                    %s
                 
-                        flyable.fly();
-                
-                        System.out.println("用户 admin 结束访问该方法，地点：xm，时间：" + LocalDateTime.now());
-                    }
                 }
                 
-                """.formatted(i.getName(), i.getName(), i.getName());
+                """.formatted(i.getName(), i.getName(), i.getName(), methodsString);
 
         String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
