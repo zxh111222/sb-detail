@@ -3,6 +3,7 @@ package com.example;
 
 import com.example.bean.Bean1;
 import com.example.bean.Bean2;
+import com.example.bean.Bean3NeedBean2;
 import com.example.config.AppConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,8 @@ public class AnnotationBasedMyIoCTest {
         Bean2 bean2 = (Bean2) myAnnotationConfigApplicationContext.getBean("bean2");
         Assertions.assertNotNull(bean2);
         // 反面测试
-        Object bean3 = myAnnotationConfigApplicationContext.getBean("bean3");
-        Assertions.assertNull(bean3);
+        Bean3NeedBean2 bean3 = (Bean3NeedBean2) myAnnotationConfigApplicationContext.getBean("bean3NeedBean2");
+        Assertions.assertEquals(bean3.bean2, bean2);
 
     }
 

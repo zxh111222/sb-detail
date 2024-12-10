@@ -1,5 +1,8 @@
 package com.example.bean;
 
+import com.example.annotation.MyComponent;
+
+@MyComponent
 public class Bean3NeedBean2 {
 
     public Bean2 bean2;
