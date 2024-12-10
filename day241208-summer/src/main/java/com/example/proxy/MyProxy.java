@@ -32,16 +32,18 @@ public class MyProxy {
                     """.formatted(method.getName(), i.getName(), method.getName());
         }
 
+        String proxyName = "$Proxy1";
+
         String sourceCode = """
                 package com.example.proxy;
                 
                 import java.lang.reflect.Method;
                 
-                public class GirlLoggingProxy2 implements %s {
+                public class %s implements %s {
                 
                     %s h;
                 
-                    public GirlLoggingProxy2(%s h) {
+                    public %s(%s h) {
                         this.h = h;
                     }
                 
@@ -49,12 +51,12 @@ public class MyProxy {
                 
                 }
                 
-                """.formatted(i.getName(), h.getClass().getName(), h.getClass().getName(), methodsString);
+                """.formatted(proxyName, i.getName(), h.getClass().getName(), proxyName, h.getClass().getName(), methodsString);
 
         String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
 
-        String fileName = userDir + "/src/main/java/com/example/proxy/GirlLoggingProxy2.java";
+        String fileName = userDir + "/src/main/java/com/example/proxy/" + proxyName + ".java";
         try {
             // 源代码
             File file = new File(fileName);
@@ -76,7 +78,7 @@ public class MyProxy {
             URL[] urls = new URL[]{new URL("file:/" + userDir + "/src/")};
             URLClassLoader urlClassLoader = new URLClassLoader(urls);
             Thread.sleep(100);
-            Class<?> aClass = urlClassLoader.loadClass("com.example.proxy.GirlLoggingProxy2");
+            Class<?> aClass = urlClassLoader.loadClass("com.example.proxy." + proxyName);
             System.out.println(aClass);
 
             // 实例
