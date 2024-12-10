@@ -14,7 +14,7 @@ public class AnnotationBasedMyIoCTest {
     @Test
     public void xxxx() {
         MyAnnotationConfigApplicationContext myAnnotationConfigApplicationContext = new MyAnnotationConfigApplicationContext(AppConfig.class);
-        Object appConfig = MyAnnotationConfigApplicationContext.getBean("appConfig");
+        Object appConfig = myAnnotationConfigApplicationContext.getBean("appConfig");
         Assertions.assertNotNull(appConfig);
 
     }
