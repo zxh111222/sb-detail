@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.annotation.MyComponent;
 import com.example.annotation.MyComponentScan;
 import com.example.annotation.MyConfiguration;
 
@@ -26,7 +27,9 @@ public class MyAnnotationConfigApplicationContext implements MyBeanFactory {
                     System.out.println(basePackage);
                     List<Class<?>> classes = scanPackage(basePackage);
                     for (Class<?> cls : classes) {
-                        System.out.println("Found class: " + cls.getName());
+                        if (cls.getAnnotation(MyComponent.class) != null) {
+                            System.out.println("Found @MyComponent class: " + cls.getName());
+                        }
                     }
                 }
             }
