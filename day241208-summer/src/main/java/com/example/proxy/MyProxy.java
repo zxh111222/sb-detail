@@ -33,9 +33,11 @@ public class MyProxy {
         }
 
         String proxyName = "$Proxy1";
+        String packageName = i.getPackageName();
+        String packagePath = packageName.replace(".", "/");
 
         String sourceCode = """
-                package com.example.proxy;
+                package %s;
                 
                 import java.lang.reflect.Method;
                 
@@ -51,12 +53,12 @@ public class MyProxy {
                 
                 }
                 
-                """.formatted(proxyName, i.getName(), h.getClass().getName(), proxyName, h.getClass().getName(), methodsString);
+                """.formatted(packageName, proxyName, i.getName(), h.getClass().getName(), proxyName, h.getClass().getName(), methodsString);
 
         String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
 
-        String fileName = userDir + "/src/main/java/com/example/proxy/" + proxyName + ".java";
+        String fileName = userDir + "/src/main/java/" + packagePath + "/" + proxyName + ".java";
         try {
             // 源代码
             File file = new File(fileName);
@@ -78,7 +80,7 @@ public class MyProxy {
             URL[] urls = new URL[]{new URL("file:/" + userDir + "/src/")};
             URLClassLoader urlClassLoader = new URLClassLoader(urls);
             Thread.sleep(100);
-            Class<?> aClass = urlClassLoader.loadClass("com.example.proxy." + proxyName);
+            Class<?> aClass = urlClassLoader.loadClass( packageName+ "." + proxyName);
             System.out.println(aClass);
 
             // 实例
