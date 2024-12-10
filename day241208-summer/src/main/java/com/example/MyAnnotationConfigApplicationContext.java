@@ -6,6 +6,7 @@ import com.example.annotation.MyConfiguration;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.util.*;
 
@@ -28,8 +29,11 @@ public class MyAnnotationConfigApplicationContext implements MyBeanFactory {
                     List<Class<?>> classes = scanPackage(basePackage);
                     for (Class<?> cls : classes) {
                         if (cls.getAnnotation(MyComponent.class) != null) {
-                            System.out.println("Found @MyComponent class: " + cls.getName());
-                        }
+                            Constructor<?>[] constructors = cls.getDeclaredConstructors();
+                            if (constructors.length == 1 && constructors[0].getParameterCount() == 0) {
+                                Object o = constructors[0].newInstance();
+                                beansMap.put(getKeyName(cls), o);
+                            }                        }
                     }
                 }
             }
