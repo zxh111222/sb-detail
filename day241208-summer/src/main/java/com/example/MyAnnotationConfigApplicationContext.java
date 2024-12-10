@@ -22,7 +22,8 @@ public class MyAnnotationConfigApplicationContext implements MyBeanFactory {
                     Object o = configClass.getDeclaredConstructor().newInstance();
                     beansMap.put(getKeyName(configClass), o);
                 } else if(annotation instanceof MyComponentScan) {
-
+                    String value = ((MyComponentScan) annotation).value();
+                    System.out.println("value = " + value);
                 }
             }
         }catch (Exception e) {
