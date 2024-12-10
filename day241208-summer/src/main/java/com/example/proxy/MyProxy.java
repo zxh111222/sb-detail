@@ -56,9 +56,9 @@ public class MyProxy {
         try {
             // 源代码
             File file = new File(fileName);
-            FileWriter fw = new FileWriter(file);
-            fw.write(sourceCode);
-            fw.flush();
+            try(FileWriter fw = new FileWriter(file)){
+                fw.write(sourceCode);
+            }
 
             // 编译
             // compile
@@ -73,6 +73,7 @@ public class MyProxy {
             // load to memory
             URL[] urls = new URL[] {new URL("file:/" + userDir + "/src/")};
             URLClassLoader urlClassLoader = new URLClassLoader(urls);
+            Thread.sleep(100);
             Class<?> aClass = urlClassLoader.loadClass("com.example.proxy.GirlLoggingProxy2");
             System.out.println(aClass);
 
