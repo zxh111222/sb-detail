@@ -57,4 +57,12 @@ public class ProxyTest {
 //        flyable.fly();
     }
 
+    @Test
+    @DisplayName("测试动态代理")
+    void testDynamicProxy2() {
+        Flyable flyable = (Flyable) MyProxy.newProxyInstance(Flyable.class, new TimerHandler(new Girl()));
+
+        flyable.fly();
+    }
+
 }
