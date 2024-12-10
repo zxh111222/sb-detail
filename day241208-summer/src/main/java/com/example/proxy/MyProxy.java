@@ -11,43 +11,45 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.logging.Handler;
 
 public class MyProxy {
 
-    public static Object newProxyInstance(Class i) {
+    public static Object newProxyInstance(Class i, MyInvocationHandler h) {
         String methodsString = "";
         Method[] methods = i.getMethods();
         for (Method method : methods) {
             methodsString += """
                     @Override
                         public void %s() {
-                            System.out.println("用户 admin 开始访问该方法，地点：xm，时间：" + LocalDateTime.now());
-                    
-                            flyable.%s();
-                    
-                            System.out.println("用户 admin 结束访问该方法，地点：xm，时间：" + LocalDateTime.now());
+                            try {
+                                Method md = %s.class.getMethod("%s");
+                                h.invoke(md);
+                            }catch (Exception e){
+                                throw  new RuntimeException(e);
+                            }
                         }
-                    """.formatted(method.getName(), method.getName());
+                    """.formatted(method.getName(), i.getName(), method.getName());
         }
 
         String sourceCode = """
                 package com.example.proxy;
                 
-                import java.time.LocalDateTime;
+                import java.lang.reflect.Method;
                 
                 public class GirlLoggingProxy2 implements %s {
                 
-                    %s flyable;
+                    %s h;
                 
-                    public GirlLoggingProxy2(%s flyable) {
-                        this.flyable = flyable;
+                    public GirlLoggingProxy2(%s h) {
+                        this.h = h;
                     }
                 
                     %s
                 
                 }
                 
-                """.formatted(i.getName(), i.getName(), i.getName(), methodsString);
+                """.formatted(i.getName(), h.getClass().getName(), h.getClass().getName(), methodsString);
 
         String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
@@ -56,7 +58,7 @@ public class MyProxy {
         try {
             // 源代码
             File file = new File(fileName);
-            try(FileWriter fw = new FileWriter(file)){
+            try (FileWriter fw = new FileWriter(file)) {
                 fw.write(sourceCode);
             }
 
@@ -71,7 +73,7 @@ public class MyProxy {
 
             // 加载出对象
             // load to memory
-            URL[] urls = new URL[] {new URL("file:/" + userDir + "/src/")};
+            URL[] urls = new URL[]{new URL("file:/" + userDir + "/src/")};
             URLClassLoader urlClassLoader = new URLClassLoader(urls);
             Thread.sleep(100);
             Class<?> aClass = urlClassLoader.loadClass("com.example.proxy.GirlLoggingProxy2");
@@ -79,8 +81,8 @@ public class MyProxy {
 
             // 实例
             // create an instance
-            Constructor<?> declaredConstructor = aClass.getDeclaredConstructor(Flyable.class);
-            Flyable flyable = (Flyable) declaredConstructor.newInstance(new Girl());
+            Constructor<?> declaredConstructor = aClass.getDeclaredConstructor(h.getClass());
+            Flyable flyable = (Flyable) declaredConstructor.newInstance(h);
 
             return flyable;
 
